@@ -1,0 +1,55 @@
+ Ques 2: Why collections are used in java if everything can be implemented using Array?
+Ans: The Collection in Java is a framework that provides an architecture to store and manipulate a group of objects.
+		Java Collections can achieve all the operations that you perform on data such as searching, sorting, insertion, manipulation, and deletion.
+		
+		Java Collection means a single unit of objects. 
+		Java Collection framework provides many interfaces (Set, List, Queue, Deque) and classes (ArrayList, Vector, LinkedList, PriorityQueue, HashSet, LinkedHashSet, TreeSet).
+			 
+	 
+	 
+Ques 3: What are fail-fast and fail-safe collection iterations
+Ans: Fail-Fast systems abort operation as-fast-as-possible exposing failures immediately and stopping the whole operation. Whereas, 
+	Fail-Safe systems don't abort an operation in the case of a failure. Such systems try to avoid raising failures as much as possible.
+
+
+Ques 4: Difference between Iterator and ListIterator
+Ans:
+	 1 An Iterator is an interface in Java and we can traverse the elements of a list in a forward direction whereas a ListIterator is an interface that extends the Iterator interface and
+	 2 we can traverse the elements in both forward and backward directions. 
+	 3 An Iterator can be used in these collection types like List, Set, and Queue whereas ListIterator can be used in List collection only.
+	 4 The important methods of Iterator interface are hasNext(), next() and remove()  whereas important methods of ListIterator interface are add(), hasNext(), hasPrevious() and remove().
+
+
+Ques 5: Explain the real situation use of HashMap, HashSet, and LinkedList collections 
+Ans:
+	 Hashmap
+	----------
+	  HashMap is a data structure that uses a hash function to map identifying values, known as keys, to their associated values.
+	  It contains “key-value” pairs and allows retrieving value by key.
+       The most impressive feature is its fast lookup of elements, especially for large no. of elements. It is not synchronized by default but we can make it so by calling
+    
+	    Syntax;
+	   --------
+        Map my hash = Collections.synchronizedMap(hashMap);
+		at creation time, to prevent accidental unsynchronized access to the map.
+		These are various important hashmap class methods. This post explains: put(), get(), isEmpty() and size()
+	  
+	  HashSet 
+	 -----------
+		Store Unique Records.
+		Records do not have any specific order.
+		De-duplicate records.
+		You do not want to retrieve a specific record out of HashSet.
+		Let’s try to understand this with a real-life example. Consider, you have a large collection of Users activity.
+		Which has the details about the activity type, time, place and id of the user who performed the activity. Your task is to find Names of all the users who performed at least one activity.
+        Firstly, you will have to grab ids of all the users from the activity collection. Then, get a unique list of user ids (each user may have performed multiple activities). Finally, retrieve the names of the users by ids.
+	 
+	  LinkedList
+	--------------
+	    Implementation of stacks and queues
+		Implementation of graphs: Adjacency list representation of graphs is the most popular which uses a linked list to store adjacent vertices.
+		Dynamic memory allocation: We use a linked list of free blocks.
+		Maintaining a directory of names
+		Performing arithmetic operations on long integers
+		Manipulation of polynomials by storing constants in the node of the linked list
+		representing sparse matrices
