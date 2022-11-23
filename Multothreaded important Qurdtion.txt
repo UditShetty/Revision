@@ -1,0 +1,318 @@
+Question 1:- WHAT IS THE NEED FOR THREADS IN JAVA?
+
+Answer :
+
+-> Threads allow a program to operate more efficiently by doing multiple things at the same time.
+
+-> Threads can be used to perform complicated tasks in the background without interrupting the main program.
+
+-> so when we have multiple tasks to perform simultaneously, we need a thread.
+
+==============================================================================================================
+
+Question 2:- HOW DO YOU CREATE A THREAD?
+
+Answer :
+
+-> A thread can programmatically be created by:
+
+1) Implementing java. lang.Runnable interface.
+2) Extending the java. lang.Thread class.
+
+-> You can create threads by implementing the runnable interface and overriding the run() method. 
+-> Then, you can create a thread object and call the start() method.
+
+==============================================================================================================
+
+Question 3:- HOW DO YOU CREATE A THREAD BY EXTENDING THREAD CLASS?
+
+Answer :
+
+-> When a class extends any other class, all the methods of the extended class will be inherited by the child class.
+
+-> the same follows in the thread class when any class extends the thread class then all the methods will be inherited.
+
+-> there is one method called "start()" will use to start a new separate thread from the main thread.
+
+-> so this is how we can create a thread by extending the thread class.
+
+
+
+
+==============================================================================================================
+
+Question 4:- HOW DO YOU CREATE A THREAD BY IMPLEMENTING RUNNABLE INTERFACE?
+
+Answer :
+
+-> The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread. Runnable interfaces have only one method named run().
+
+ex -> public void run(): is used to act as a thread.
+
+-> this is how we can create a thread by implementing a runnable interface.
+
+
+
+==============================================================================================================
+
+Question 5:- HOW DO YOU RUN A THREAD IN JAVA?
+
+Answer :
+
+-> when we call the start() method from the thread class our thread will automatically start running and if,
+
+-> the class implements the Runnable interface, the thread can be run by passing an instance of the class to a Thread object's constructor and then calling the thread's start() method:
+
+
+
+==============================================================================================================
+
+Question 6:- WHAT ARE THE DIFFERENT STATES OF A THREAD?
+
+Answer : 
+-> there are 6 states of thread.
+
+-> A thread state. A thread can be in one of the following states:
+
+    1) NEW
+    	A thread that has not yet started is in this state.
+
+    2) RUNNABLE
+    	A thread executing in the Java virtual machine is in this state.
+
+    3) BLOCKED
+    	A thread that is blocked and waiting for a monitor lock is in this state.
+
+    4) WAITING
+    	A thread that is waiting indefinitely for another thread to perform a particular action is in this state.
+
+    5) TIMED_WAITING
+    	A thread that is waiting for another thread to act for up to a specified waiting time is in this state.
+
+    6) TERMINATED
+    	A thread that has exited is in this state.
+
+
+
+
+==============================================================================================================
+
+Question 7:- WHAT IS PRIORITY OF A THREAD? HOW DO YOU CHANGE THE PRIORITY OF A THREAD?
+
+Answer :
+
+-> The thread priority determines when the processor is provided to the thread as well as other resources. 
+
+-> It can be changed using the method setPriority() of class Thread.
+
+-> There are three static variables for thread priority in Java i.e. MIN_PRIORITY, MAX_PRIORITY, and NORM_PRIORITY. The values of these variables are 1, 10, and 5 respectively.
+
+
+==============================================================================================================
+
+Question 8:- WHAT IS EXECUTORSERVICE?
+
+Answer :
+
+-> ExecutorService is a JDK API that simplifies running tasks in asynchronous mode.
+
+-> The Java ExecutorService is the interface that allows us to execute tasks on threads asynchronously. 
+
+-> The Java ExecutorService interface is present in java. util.concurrent package. 
+
+-> The ExecutorService helps in maintaining a pool of threads and assigns them tasks. 
+
+-> It also provides the facility to queue up tasks until there is a free thread available if the number of tasks is more than the threads available. 
+
+
+==============================================================================================================
+
+Question 9:- CAN YOU GIVE AN EXAMPLE FOR EXECUTORSERVICE?
+
+Answer :
+
+-> 
+
+// code
+
+package com. Masai
+public class ExecutorServiceExample {  
+  
+    public static void main(String[] args) {  
+
+        ExecutorService executorService = Executors.newFixedThreadPool(5); 
+ 
+        executorService.execute(new Runnable() {  
+              
+            @Override  
+            public void run() {  
+
+                System.out.println("ExecutorService imple");  
+                  
+            }  
+
+        });  
+
+        executorService.shutdown();  
+    }  
+
+Question 11:- HOW DO YOU CHECK WHETHER AN EXECUTIONSERVICE TASK EXECUTED
+                        SUCCESSFULLY?
+Answer:
+The Java ExecutorService submit(Runnable) method also takes a Runnable implementation,
+but returns a Future object. 
+This Future object can be used to check if the Runnable has finished executing.
+**********************************************************************************************************************************************************************************************
+Question 12. WHAT IS CALLABLE? HOW DO YOU EXECUTE A CALLABLE FROM
+                      EXECUTIONSERVICE?
+Answer: 
+The Callable() method of the Executors class returns a Callable object that, when called, runs the given task and returns null.
+
+Syntax
+public static Callable<Object> callable(Runnable task)  
+public static <T> Callable<T> callable(Runnable task, T result)  
+public static Callable<Object> callable(PrivilegeAction<?> action)  
+public static Callable<Object> callable(PrivilegedExceptionAction<?> action)  
+**********************************************************************************************************************************************************************************************
+Question 13. WHAT IS THE SYNCHRONIZATION OF THREADS?
+Answer:-
+Synchronization in Java is the capability to control the access of multiple threads to any shared resource.
+Java Synchronization is a better option where we want only one thread to access the shared resource.
+
+The synchronization is mainly used to
+
+To prevent thread interference.
+To prevent consistency problems.
+
+**********************************************************************************************************************************************************************************************
+Question 14. CAN YOU GIVE AN EXAMPLE OF A SYNCHRONIZED BLOCK?
+Answer:
+TestSynchronizedBlock1.java
+
+class Table  
+{      
+ void printable(int n){    
+   synchronized(this){//synchronized block    
+     for(int i=1;i<=5;i++){    
+      System.out.println(n*i);    
+      try{    
+       Thread.sleep(400);    
+      }catch(Exception e){System.out.println(e);}    
+     }    
+   }    
+ }//end of the method    
+}    
+    
+class MyThread1 extends Thread{    
+Table t;    
+MyThread1(Table t){    
+this.t=t;    
+}    
+public void run(){    
+t.printTable(5);    
+}    
+    
+}    
+class MyThread2 extends Thread{    
+Table t;    
+MyThread2(Table t){    
+this.t=t;    
+}    
+public void run(){    
+t.printTable(100);    
+}    
+}    
+    
+public class TestSynchronizedBlock1{    
+public static void main(String args[]){    
+Table obj = new Table();//only one object    
+MyThread1 t1=new MyThread1(obj);    
+MyThread2 t2=new MyThread2(obj);    
+t1.start();    
+t2.start();    
+}    
+}    
+
+**********************************************************************************************************************************************************************************************
+Question 15. CAN A STATIC METHOD BE SYNCHRONIZED?
+Answer 15:
+Static Synchronized method is also a method of synchronizing a method in java such that no two threads can act simultaneously static upon the synchronized method. 
+The only difference is by using Static Synchronized. We are attaining a class-level lock such that only one thread will operate on the method. 
+The Thread will acquire a class level lock of a java class, such that only one thread can act on the static synchronized method.
+
+
+**********************************************************************************************************************************************************************************************
+Question 16. WHAT IS THE USE OF THE JOIN METHOD IN THREADS?
+Answer 16:
+
+The join() method in Java is provided by java. lang.
+Thread class that permits one thread to wait until the other thread finishes its execution.
+Suppose to be the object of the class Thread whose thread is doing its execution currently, then the th. join();
+statement ensures that this is finished before the program does the execution of the next statement. 
+When there is more than one thread invoking the join() method, 
+then it leads to overloading on the join() method that permits the developer or programmer to mention the waiting period.
+However, similar to the sleep() method in Java, the join() method is also dependent on the operating system for the timing,
+so we should not assume that the join() method waits equal to the time we mention in the parameters. 
+**********************************************************************************************************************************************************************************************
+
+17. DESCRIBE A FEW OTHER IMPORTANT METHODS IN THREADS?
+Answer 17:-
+
+Thread Methods:
+*****************
+start() – Starts the thread.
+getState() – It returns the state of the thread.
+getName() – It returns the name of the thread.
+get priority() – It returns the priority of the thread.
+sleep() – Stop the thread for the specified time.
+Join() – Stop the current thread until the called thread gets terminated.
+isAlive() – Check if the thread is alive.
+
+**********************************************************************************************************************************************************************************************
+18. WHAT IS A DEADLOCK?
+Answer 18:-A Deadlock is a situation where each of the computer processes waits for a resource that is being assigned to some other process.
+In this situation, none of the processes gets executed since the resource it needs, is held by some other process that is also waiting for some other resource to be released.
+
+**********************************************************************************************************************************************************************************************
+19. WHAT ARE THE IMPORTANT METHODS IN JAVA FOR INTER-THREAD
+COMMUNICATION?
+
+Answer:-
+Inter-thread communication or Cooperation is all about allowing synchronized threads to communicate with each other.
+Cooperation (Inter-thread communication) is a mechanism in which a thread is paused running in its critical section and another thread is allowed to enter (or lock) in the same critical section to be executed.
+It is implemented by following methods of Object class:
+
+wait()
+notify()
+notifyAll()
+
+**********************************************************************************************************************************************************************************************
+Question 20. WHAT IS THE USE OF THE WAIT METHOD?
+
+Answer:-
+The Wait() method is related to the Object class. 
+The Wait() method is responsible for sending the calling thread into the waiting state.
+The Thread remains to wait until another thread doesn't invoke the notify() or notifyAll() method for that object.
+The Thread resumes the execution after obtaining ownership of the monitor.
+
+**********************************************************************************************************************************************************************************************
+
+Question 21. WHAT IS THE USE OF NOTIFY METHOD?
+Answer : 
+-The notify() method of the thread class is used to wake up a single thread. 
+-This method gives the notification for only one thread which is waiting for a particular object.
+-If we use notify() method and multiple threads are waiting for the notification then only one thread gets the notification and the remaining thread has to wait for further notification.
+
+Syntax
+*******
+public final void notify()  
+
+**********************************************************************************************************************************************************************************************
+Question 22:-  WHAT IS THE USE OF NOTIFYALL METHOD?
+
+Answer : 
+-The notifyAll() method of the thread class is used to wake up all threads. 
+-This method gives the notification to all waiting threads of a particular object.
+-If we use the notifyAll() method and multiple threads are waiting for the notification 
+ then all the threads got the notification but the execution of threads will be performed
+ one by one because the thread requires a lock and only one lock is available for one object.
