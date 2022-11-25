@@ -1,0 +1,88 @@
+Ques 1: Name some important classes available in java.io package
+
+Ans:
+The following are the important classes in Java.io package:
+------------------------------------------------------------
+-BufferedInputStream
+-BufferedOutputStream
+-BufferedReader
+-BufferedWriter
+-ByteArrayInputStream
+-ByteArrayOutputStream
+-CharArrayReader
+-CharArrayWriter – Set1 Set2
+-Console
+-DataInputStream – Set1 Set2
+-DataOutputStream
+-File
+-FileDescriptor
+-FileInputStream
+-FileOutputStream
+-file permissions
+-FileReader and FileWriter
+
+***********************************************************************************************************************************************************************************************
+Ques 2: Difference between FileReader and BufferedFileReader
+
+Ans:-
+
+Basis 	                  BufferedReader 	                                                                                                                                                                                                FileReader 
+******                         ****************                                                                                                                                                                                                         ***********
+Use	                  It is used to read characters from any type of character input stream (String, Files, etc.)	                                                                  It can be used only for reading files
+Buffer	                  Uses Buffer internally to read characters from	                                                                                                                                          Doesn’t use Buffer. Directly reads from the file by accessing the hard drive.
+Speed	                  Faster	                                                                                                                                                                                                                  Slower
+Efficiency   	Much more efficient for reading files	                                                                                                                                                            Less efficient 
+Reading Lines	BufferedReader can be used to read a single character at a time as well as a line at a time.	                                                                  It can read only one character at a time, can not read lines
+
+
+***********************************************************************************************************************************************************************************************
+Ques 3: What is the most efficient way to read the content of a text file according to you in java ?
+
+Ans:-
+Using scanner to read text file in java
+If you want to read file line by line or based on some java regular expression,
+Scanner is the class to use. Scanner breaks its input into tokens using a delimiter pattern, which by default matches whitespace
+
+***********************************************************************************************************************************************************************************************
+Ques 4: How to process binary file using java (i.e. reducing the pixels an image file).Give the rough idea on how would you process it using inbuild library/external libraries in java?
+
+Ans:
+In this Java File IO tutorial, we show you how to read and write binary files using both legacy File I/O API and new File I/O API (NIO). 
+The legacy API (classes in the java.io.* package) is perfect for manipulating low-level binary I/O operations such as reading and writing exactly one byte at a time, 
+whereas the NIO API (classes in the java.nio.* package) is more convenient for reading and writing the whole file at once, and of course, faster than the old File I/O API.
+
+***********************************************************************************************************************************************************************************************
+Ques 5: Why there are unchecked exceptions are available in java if not complain by compiler. Why this segregation of checked and unchecked exceptioins?
+
+Ans:-
+Major reasons why an exception Occurs
+***************************************
+Invalid user input
+Device failure
+Loss of network connection
+Physical limitations (out of disk memory)
+Code errors
+Opening an unavailable file
+
+Checked Exceptions : Checked exceptions are called compile-time exceptions because these exceptions are checked at compile-time by the compiler.
+********************* 
+Unchecked Exceptions : 
+************************
+The unchecked exceptions are just opposite to the checked exceptions. 
+The compiler will not check these exceptions at compile time. 
+In simple words, if a program throws an unchecked exception, and even if we didn’t handle or declare it, the program would not give a compilation error.
+
+***********************************************************************************************************************************************************************************************
+Ques 6: Can you throw another exception from a Catch block. Write an example if yes?
+When an exception is cached in a catch block, you can re-throw it using the throw keyword (which is used to throw the exception objects).
+
+While re-throwing exceptions you can throw the same exception as it is without adjusting it as −
+
+try {
+   int result = (arr[a])/(arr[b]);
+   System.out.println("Result of "+arr[a]+"/"+arr[b]+": "+result);
+}catch(ArithmeticException e) {
+   throw e;
+}
+
+*************************************************************************************************************************************************************************
