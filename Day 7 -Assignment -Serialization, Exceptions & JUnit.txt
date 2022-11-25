@@ -1,0 +1,133 @@
+Ques 1: What is serialization? When we use it try to explain it with any real use case.
+Ans:-
+Serialization in Java is the concept of representing an object’s state as a byte stream. 
+The byte stream has all the information about the object. 
+Usually used in Hibernate, JMS, JPA, and EJB, serialization in Java helps transport
+the code from one JVM to another and then de-serialize it there.
+
+***********************************************************************************************************************************************************************************************
+Ques 2: Can you serialize an object of subclass if superclass does not implement serializable?
+Ans:
+If the superclass is Serializable, then by default, every subclass is serializable. Hence, 
+even though subclass doesn’t implement Serializable interface( and if its superclass implements Serializable), 
+then we can serialize subclass object. 
+
+***********************************************************************************************************************************************************************************************
+Ques 3: Can you prevent serializing a subclass object when super type is serializable
+Ans:
+If superClass has implemented Serializable that means subclass is also Serializable (as subclass always inherits all features from its parent class),
+for avoiding Serialization in sub-class we can define writeObject() method and throw NotSerializableException()
+
+***********************************************************************************************************************************************************************************************
+Ques 4: What is the user of transient keyword in Java explain with use-case
+Ans
+transient is a variables modifier used in serialization. 
+At the time of serialization, if we don’t want to save value of a particular variable in a file, then we use transient keyword. 
+When JVM comes across transient keyword, it ignores original value of the variable and save default value of that variable data type.
+transient keyword plays an important role to meet security constraints. 
+There are various real-life examples where we don’t want to save private data in file. 
+Another use of transient keyword is not to serialize the variable 
+whose value can be calculated/derived using other serialized objects or system such as age of a person, current date, etc.
+
+
+***********************************************************************************************************************************************************************************************
+Ques 5: Why serialVersionUID is important in class definitions. When it becomes important to define in objects. What is JVM behavior in case you do not define serialVersionUID for your object
+Ans:
+The serialization at runtime associates with each serializable class a version number called a serialVersionUID, 
+which is used during deserialization to verify that the sender and receiver of a serialized object have loaded classes for that object that are compatible with respect to serialization. 
+Geek, now you must be wondering why do we use SerialVersionUID!
+It is because SerialVersionUID is used to ensure that during deserialization the same class (that was used during serialize process) is loaded. 
+Consider ran the illustration given below to get a fairer understanding of Serialization & Deserialization.
+
+***********************************************************************************************************************************************************************************************
+Ques 6: Can we write try block without catch and finally
+Ans:
+Yes, It is possible to have a try block without a catch block by using a final block.
+
+As we know, a final block will always execute even there is an exception occurred in a try block, except System.exit() it will execute always.
+
+Example 1
+public class TryBlockWithoutCatch {
+   public static void main(String[] args) {
+      try {
+         System.out.println("Try Block");
+      } finally {
+         System.out.println("Finally Block");
+      }
+   }
+}
+
+***********************************************************************************************************************************************************************************************
+Quest 7: Can we write try with finally block but not catch block
+Ans:
+Yes, It is possible to have a try block without a catch block by using a final block.
+
+As we know, a final block will always execute even there is an exception occurred in a try block, except System.exit() it will execute always.
+
+Example 1
+public class TryBlockWithoutCatch {
+   public static void main(String[] args) {
+      try {
+         System.out.println("Try Block");
+      } finally {
+         System.out.println("Finally Block");
+      }
+   }
+}
+
+***********************************************************************************************************************************************************************************************
+Ques 8: How to create user defined unchecked exceptions in java
+Ans:
+We can create the custom unchecked exception by extending the RuntimeException in Java.
+
+Unchecked exceptions inherit from the Error class or the RuntimeException class. Many programmers feel that we cannot handle these exceptions in our programs because they represent the type of errors from which programs cannot be expected to recover while the program is running. When an unchecked exception is thrown, it is usually caused by misuse of code, passing a null or otherwise incorrect argument.
+
+Syntax
+public class MyCustomException extends RuntimeException {
+   public MyCustomException(String message) {
+      super(message);
+   }
+}
+
+***********************************************************************************************************************************************************************************************
+Ques 9: What happens when method returns something from try block, will finally be executed in that case?
+Ans:
+Yes, the finally block will be executed even after a return statement in a method. 
+
+The finally block will always execute even an exception occurred or not in Java. If we call the System.exit() method explicitly in the finally block then only it will not be executed. There are few situations where the finally will not be executed like JVM crash, power failure, software crash and etc. Other than these conditions, the finally block will be always executed.
+
+Example
+public class FinallyBlockAfterReturnTest {
+   public static void main(String[] args) {
+      System.out.println(count());
+   }
+   public static int count() {
+      try {
+         return 1;
+      } catch(Exception e) {
+         return 2;
+      } finally {
+         System.out.println("Finally block will execute even after a return statement in a method");
+      }
+   }
+}
+
+
+***********************************************************************************************************************************************************************************************
+Ques 10: Name some important Checked Exceptions you have used in your implementations
+Ans:
+
+A list of some important checked exceptions is given below:
+ClassNotFoundException.
+InterruptedException.
+InstantiationException.
+IOException.
+SQLException.
+IllegalAccessException.
+FileNotFoundException, etc.
+
+
+
+
+
+***********************************************************************************************************************************************************************************************
