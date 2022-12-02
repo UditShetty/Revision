@@ -1,0 +1,56 @@
+Problem 1:
+SELECT sector, round(avg(Eps),2) as AvgEPSPerSector 
+from Stock group by sector having AvgEPSPerSector>10 
+order by AvgEPSPerSector desc;
+
+
+Problem 2:
+SELECT
+  job_id,
+  AVG(salary) AS avg_salary
+FROM
+  employee
+GROUP BY
+  job_id
+HAVING
+avg_salary>10000
+ORDER BY
+  avg_salary DESC;
+
+Problem 3:
+SELECT
+  job_id,
+  AVG(salary) AS avg_salary
+FROM
+  employee
+GROUP BY
+  job_id
+ HAVING avg_salary>10000 AND avg_salary<20000
+ORDER BY
+  avg_salary DESC;
+
+Problem 4:
+SELECT product_id,COUNT(*) 
+FROM sale GROUP BY product_id 
+HAVING COUNT(*) 
+ORDER BY COUNT(*) DESC;
+
+
+
+Nested Subquery
+-----------------
+Problem 1:
+SELECT department_name from department where department_id in(SELECT
+  department_id
+FROM
+  employee
+WHERE
+  salary > 10000);
+
+Problem 2:
+SELECT first_name FROM employee WHERE job_id in(SELECT
+  job_id
+FROM
+  employee
+WHERE
+  salary > 10000);
