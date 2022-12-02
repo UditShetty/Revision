@@ -54,3 +54,25 @@ FROM
   employee
 WHERE
   salary > 10000);
+  
+  Problem 3:
+SELECT
+  product_id,
+  COUNT(*) AS number_of_orders
+FROM
+  sale
+GROUP BY
+  product_id
+  order by number_of_orders DESC LIMIT 3
+  
+  Problem 4:
+SELECT * FROM product where product_id in(SELECT
+  product_id
+FROM
+  sale
+GROUP BY
+  product_id
+ORDER BY
+  COUNT(*) DESC
+LIMIT
+  3);
