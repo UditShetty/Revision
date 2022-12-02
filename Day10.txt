@@ -1,0 +1,73 @@
+3. Write some important features of Spring Boot.
+Web Development
+SpringApplication
+Application events and listeners
+Admin features
+Externalized Configuration
+Properties Files
+YAML Support
+Type-safe Configuration
+Logging
+Security
+Web Development
+-----------------
+It is well suited Spring module for web application development. We can easily create a self-contained HTTP server using embedded Tomcat, Jetty or Undertow. We can use the spring-boot- starter-web module to start and running application quickly.
+
+SpringApplication
+------------------
+It is a class which provides the convenient way to bootstrap a spring application which can be started from main method. You can call start your application just by calling a static run() method.
+
+public static void main(String[] args){  
+    SpringApplication.run(className.class, args);  
+}  
+Application Events and Listeners
+----------------------------------
+Spring Boot uses events to handle variety of tasks. It allows us to create factories file that are used to add listeners. we can refer it by using ApplicationListener key.
+
+Admin Support
+---------------
+Spring Boot provides the facility to enable admin related features for the application. It is used to access and manage application remotely. We can enable it by simply using spring.application.admin.enabled property.
+
+Externalized Configuration
+----------------------------
+Spring Boot allows us to externalize our configuration so that we can work with the same application in different environments. Application use YAML files to externalize configuration.
+
+Properties Files
+--------------------
+Spring Boot provides rich set of Application Properties. So, we can use that in properties file of our project. Properties file is used to set properties like: server-port = 8082 and many others. It helps to organize application properties.
+
+YAML Support
+-------------
+It provides convenient way for specifying hierarchical configuration. It is a superset of JSON. The SpringApplication class automatically support YAML. It is successful alternative of properties.
+
+Type-safe Configuration
+------------------------
+Strong type-safe configuration is provided to govern and validate the configuration of application. Application configuration is always a crucial task which should be type-safe. We can also use annotation provided by this library.
+
+Logging
+---------
+Spring Boot uses Common logging for all internal logging. Logging dependencies are managed by default. We should not change logging dependencies, if there is no required customization is needed.
+
+Security
+-----------
+Spring Boot applications are spring bases web applications. So, it is secure by default with basic authentication on all HTTP endpoints. A rich set of Endpoints are available for develop a secure Spring Boot application.
+
+
+
+
+
+4. Try to compare Spring vs Spring-Web vs SpringBoot
+S.No.	Spring																				Spring Boot
+------	-------																				-------------
+
+1.	Spring is an open-source lightweight framework widely used to develop enterprise applications.	Spring Boot is built on top of the conventional spring framework, widely used to develop REST APIs.
+2.	The most important feature of the Spring Framework is dependency injection.				The most important feature of the Spring Boot is Autoconfiguration.
+3. 	It helps to create a loosely coupled application.										It helps to create a stand-alone application.
+4. 	To run the Spring application, we need to set the server explicitly.						Spring Boot provides embedded servers such as Tomcat and Jetty etc.
+5.	To run the Spring application, a deployment descriptor is required.						There is no requirement for a deployment descriptor.
+6.	To create a Spring application, the developers write lots of code.						It reduces the lines of code.
+7.	It doesn’t provide support for the in-memory database.									It provides support for the in-memory database such as H2.
+
+
+5. How to run spring boot application on customized port number (other than default 8080)
+Ans.  it is possible. By using the server.port in the application.properties.
