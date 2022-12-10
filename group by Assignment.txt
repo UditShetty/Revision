@@ -48,7 +48,7 @@ WHERE
   salary > 10000);
 
 Problem 2:
-SELECT first_name FROM employee WHERE job_id in(SELECT
+SELECT job_title from job WHERE job_id in(SELECT
   job_id
 FROM
   employee
@@ -76,3 +76,42 @@ ORDER BY
   COUNT(*) DESC
 LIMIT
   3);
+  
+  Problem 5:
+  SELECT
+  product_id,
+  COUNT(*) AS number_of_orders
+FROM
+  sale
+GROUP BY
+  product_id
+HAVING
+  COUNT(*) == 1;
+  
+  Problem 6:
+  SELECT * FROM Product WHERE Product_Id IN (SELECT
+  product_id
+FROM
+  sale
+GROUP BY
+  product_id
+HAVING
+  COUNT(*) == 1);
+
+
+Problem 7:
+SELECT product_name,list_price from (SELECT
+  *
+FROM
+  product
+WHERE
+  product_id IN (
+    SELECT
+      product_id
+    FROM
+      sale
+    GROUP BY
+      product_id
+    HAVING
+      COUNT(*) == 1
+  ));
