@@ -30,10 +30,10 @@ ORDER BY
   avg_salary DESC;
 
 Problem 4:
-SELECT product_id,COUNT(*) 
+SELECT product_id,COUNT(*) as number_of_order
 FROM sale GROUP BY product_id 
-HAVING COUNT(*) 
-ORDER BY COUNT(*) DESC;
+HAVING COUNT(*) > 1
+ORDER BY number_of_order DESC;
 
 
 
